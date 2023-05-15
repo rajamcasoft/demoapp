@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Edit Customer</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=2, shrink-to-fit=no">
+
+</head>
+<body style="margin:100px;">
+    <div class="container">
+
+    <div class="table-data">
+<h2>Edit Customer</h2>
+<form method="POST" name="saveform" action="http://localhost:3000/edituser/save">
+    <table border="1" class="table">
+        <tr>
+            <th>S.N</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Country</th>
+            <th>Phone</th>           
+        </tr>
+        
+        <%
+        if(userData.length!=0){
+        var i=1;
+        userData.forEach(function(data){
+        %>
+        <tr>
+            <td><%=data.Id %></td>
+            <td><input class="form-control" type="text" name="Name" value="<%=data.Name %>"></td>
+            <td><input class="form-control" type="text" name="Address" value="<%=data.Address %>"></td>
+            <td><input class="form-control" type="text" name="Country" value="<%=data.Country %>"></td>
+            <td><input class="form-control" type="text" name="Phone" value="<%=data.Phone %>"></td>   
+            <input class="form-control" type="hidden" name="Id" value="<%=data.Id %>">
+         
+        </tr>
+       
+        <%  i++; }) %>
+        <% } else{ %>
+            <tr>
+                <td colspan="7">No Data Found</td>
+            </tr>
+        <% } %>
+    </table>
+
+    <input type="Submit" name="Submit" class="btn btn-primary" value="Save">
+</form>
+    </div>
+    </div>
+</body>
+</html>

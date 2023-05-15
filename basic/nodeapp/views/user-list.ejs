@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Fetch using MySQL and Node.js</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body style="margin:100px;">
+    <div class="container">
+
+        <div class="table-data">
+<h2>Customer List</h2>
+    <table  class="table">
+        <tr>
+            <th>S.N</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Country</th>
+            <th>Phone</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        
+        <%
+        if(userData.length!=0){
+        var i=1;
+        userData.forEach(function(data){
+        %>
+        <tr>
+            <td><%=data.Id %></td>
+            <td><%=data.Name %></td>
+            <td><%=data.Address %></td>
+            <td><%=data.Country %></td>
+            <td><%=data.Phone %></td>
+            <td><a href="/users/edit/<%=data.Id%>">Edit</a></td>
+            <td><a href="/users/delete/<%=data.Id%>">Delete</a></td>
+        </tr>
+        <%  i++; }) %>
+        <% } else{ %>
+            <tr>
+                <td colspan="7">No Data Found</td>
+            </tr>
+        <% } %>
+    </table>
+    </div>
+    </div>
+</body>
+</html>
